@@ -4,11 +4,13 @@
 #' This function extracts the data from the multiple files generated from the
 #' experiment and stores it into a list of dataframe objects, one for each
 #' subject.
+#' @note Before calling this function, make sure you're working directory is in
+#' the file you want to extract the data from.
 #' @param prefix A character prefix for the filename specifying what type of
 #' file you want to pull the data from. Ex: "DF"
 #' @param subj_nums A vector of the precise numbers of the subjects you are
 #' interested in. Ex: 21:30
-#' @returns A list of dataframes, with each dataframe belonging to a different
+#' @returns Returns a list of dataframes, with each dataframe belonging to a different
 #' subject.
 #' @export
 extract <- function(prefix, subj_nums) {
