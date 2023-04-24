@@ -3,40 +3,15 @@ title: "Demo"
 output: pdf_document
 date: "2023-03-30"
 ---
-There's almost certainly a better way to get the files into R, but this is the code I have. 
-For most experiments, each subjects will have multiple files; one for each session  (i.e. day).This code creates a list with one element for each subject. Each element of the list contains another list of files, one for each session.
+
 ---
 title: "Demo"
 output: pdf_document
 date: "2023-03-30"
 ---
-There's almost certainly a better way to get the files into R, but this is the code I have. 
-For most experiments, each subjects will have multiple files; one for each session  (i.e. day).This code creates a list with one element for each subject. Each element of the list contains another list of files, one for each session.
+
 ```{r}
-library(tidyverse)
-library(ggforce)
-library(rstatix)
-setwd("data")
-suffix = ".txt"
-prefix = "DF"
-subject_numbers = c(21:30)
-#===============================================================================
-# extracting file names
-#===============================================================================
-ids = c()
-for (s in seq_along(subject_numbers)) {
-  ids[s] =  paste(toString(subject_numbers[s]),suffix,sep = "")
-  ids[s] =  paste(prefix,toString(ids[s]),sep = "")
-  ids[s] =  paste0(ids[s], "$")
-  }
-sub.files = list()
-# sort files into file list 
-for (s in seq_along(subject_numbers)){
-  filenames = list.files(pattern = ids[[s]])
-  sub.files[[s]] = list()
-  for (f in seq_along(filenames)){sub.files[[s]][[f]]=read.delim(filenames[f])}
-  names(sub.files[[s]]) = filenames
-}
+
 ```
 
 
