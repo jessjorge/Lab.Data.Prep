@@ -1,35 +1,15 @@
 
-# df := a dataframe with 4 columns (session, time_stamps, event_tags, id)
-# event_tags := essentially a dictionary of key_value pairs
-# which map event_tag values to a variable name
-# cumulative := should we also add a cumulative variable to this thing
-
-ev_tags <- c(
-  "0.111" = "beginning",
-  "0.2" = "rat given mate",
-  "0.25" = "rat given steroids",
-  "0.4" = "water withdrawn, doom impending",
-  "0.41" = "rat got prodded",
-  "0.42" = "rat fights snake, wins",
-  "0.6" = "rat got poked",
-  "0.61" = "rat fights snake, loses",
-  "0.65" = "rat played dress-up",
-  "0.999" = "gave rat some LSD"
-)
-
-df <- mpc(sub.files[[1]], "d")
-
-#' Variable Define Function
+#' Title
 #'
 #' Function description
 #'
-#' @param df Dataframe that is being fed into the function.
+#' @param df Describe parameter here
 #'
-#' @param event_tags Describes which event took place.
+#' @param event_tags Describe parameter here
 #'
-#' @param cumulative Whether or not time is being added over sessions.
+#' @param cumulative Describe parameter here
 #'
-#' @returns This function returns
+#' @returns Describe what it returns here
 #'
 #' @export
 var_def <- function(df, event_tags, cumulative = TRUE) {
@@ -60,5 +40,3 @@ var_def <- function(df, event_tags, cumulative = TRUE) {
   }
   return(x)
 }
-
-my_x <- var_def(df, ev_tags)
