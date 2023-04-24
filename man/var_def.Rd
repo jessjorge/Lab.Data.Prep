@@ -2,20 +2,52 @@
 % Please edit documentation in R/var_def.R
 \name{var_def}
 \alias{var_def}
-\title{Variable Define Function}
+\title{Define Dummy Variables}
 \usage{
 var_def(df, event_tags, cumulative = TRUE)
 }
 \arguments{
-\item{df}{Dataframe that is being fed into the function.}
+\item{df}{Dataframe that is being fed into the function. It is essential
+that this dataframe be output by the mpc function, also defined in this
+package. You may pass in a different dataframe but the format must be
+identical to that of an mpc output.}
 
-\item{event_tags}{Describes which event took place.}
+\item{event_tags}{A dictionary consisting of key value pairs. The
+keys should correspond to all unique "event code" entries and the values
+should be event names. These names will become the columns of the output
+dataframe.}
 
-\item{cumulative}{Whether or not time is being added over sessions.}
+\item{cumulative}{If set to TRUE, the function will also output columns
+that keep track of the total number of times a particular event took place.}
 }
 \value{
-This function returns
+This function returns a dataframe x, whose first three columns
+are identical to the input dataframe, df, but with additional columns
+including dummy variables for unique events and corresponding cumulative
+columns.
 }
 \description{
-Function description
+Define Dummy Variables
+}
+\examples{
+#-------------------------------------
+ev_tags <- c(
+"0.111" = "beginning",
+"0.2" = "rat given mate",
+"0.25" = "rat given steroids",
+"0.4" = "water withdrawn, doom impending",
+"0.41" = "rat got prodded",
+"0.42" = "rat fights snake, wins",
+"0.6" = "rat got poked",
+"0.61" = "rat fights snake, loses",
+"0.65" = "rat played dress-up",
+"0.999" = "gave rat some LSD"
+)
+
+df <- mpc(sub.files[[1]], "d")
+
+my_x <- var_def(df, ev_tags)
+
+#-------------------------------------
+
 }
