@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+# HEAD
 # Tyson
 #' @title Extract Function
 #'
@@ -38,7 +38,7 @@ extract <- function(prefix, subj_nums) {
 
   sub.files
 }
-=======
+#=======
 # Tyson
 #' @title Extract Function
 #' @description
@@ -51,8 +51,8 @@ extract <- function(prefix, subj_nums) {
 #' file you want to pull the data from. Ex: "DF"
 #' @param subj_nums A vector of the precise numbers of the subjects you are
 #' interested in. Ex: 21:30
-#' @returns Returns a list of dataframes, with each dataframe belonging to a different
-#' subject.
+#' @returns Returns a list of dataframes, with each dataframe belonging to a
+#' different subject.
 #' @export
 extract <- function(prefix, subj_nums) {
   suffix <- ".txt"
@@ -73,4 +73,4 @@ extract <- function(prefix, subj_nums) {
   }
   sub_files
 }
->>>>>>> 31202a0103e115510b251d82a523380ff743e76c
+#>>>>>>> 31202a0103e115510b251d82a523380ff743e76c

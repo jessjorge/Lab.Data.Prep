@@ -17,6 +17,10 @@ library(tidyr)
 #'
 #' @param y This variable is ignored.
 #'
+#' @param time_stamp Variable that will be plotted on the x-axis
+#'
+#' @param value Variable that will be plotted on the y-axis
+#'
 #' @param ... Placeholder for further arguments.
 #'
 #' @examples
@@ -33,7 +37,7 @@ generic_plot <- function(x, y, measure, time_stamp, value, ...) {
       names_to = "measure",
       values_to = "value"
     )
-  # WRITE SOMETHING
+  # Plots the data using the specified preferences
   x |>
     filter(measure == measure) |>
     ggplot() +
@@ -44,8 +48,9 @@ generic_plot <- function(x, y, measure, time_stamp, value, ...) {
     scale_y_continuous(expand = c(0, 0))
 }
 
-#NOTES FROM DRBEAN
-# *Test that the function works before doing the following steps to make it a generic
+# NOTES FROM DRBEAN
+# *Test that the function works before doing the following steps to make it a
+# generic
 #
 # -Need to make a class function
 # -call plot.class()
