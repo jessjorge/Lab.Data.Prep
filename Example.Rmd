@@ -39,107 +39,12 @@ for (s in 1:length(subject_numbers)){
 
 ```
 
-The following function takes the raw text file and extracts a single array of interest for an variable in which the numeric before the decimal is a timestamp (in centiseconds) , and the decimal indicates the event that occured (lever press, food delivery, etc.).
+
 ```{r}
-#===============================================================================
-# add functions
-#===============================================================================
-
-# parsing text array into a data frame
-mpc = function(x, startarray, endarray) {
-  
-  text_data = data.frame()
-  text_data = rbind(text_data, x)
-  
-  split_data <- separate(text_data,
-                         col = 1,
-                         into = c("Col1", "Col2", "Col3", "Col4", "Col5", 
-                                  "Col6", "Col7"), 
-                         sep = " +")
-   start_row <- which(split_data$Col1 == arrayb)
-  end_row <- which(split_data$Col1 == arraye)
-  filtered_data <- filter(split_data,
-                          row_number() %in% (start_row + 1):(end_row - 1))
-  long_data <- data.frame()
-  row_index = 1
-   for (i in 1:nrow(filtered_data)) {
-    for(j in 3:7) {
-      long_data[row_index, 1] = filtered_data[i, j]
-      row_index = row_index + 1
-    }
-   }
-long_data <-na.omit(long_data)
-long_data<-transform(long_data,V1 = as.numeric(V1))
-
-names(long_data)[1] <- "time_plus_event"
-  
-  times_events <- data.frame(time_stamps = numeric(),
-                             event_tags = numeric())
-  
-    for (i in 1:nrow(long_data)) {
-    times_events[i, 1] = floor(long_data[i, 1])
-    times_events[i, 2] = long_data[i, 1] - times_events[i, 1]}
-  
-  df <- round(times_events$event_tags, digits = 3)
-  df <- cbind(times_events, df)
-  df = df[,c(1,3)]
-  colnames(df) = c("time_stamps", "event_tags")
-  df$event_tags = as.factor(df$event_tags)
-  
-  final = df
-  
-  return(final)
-
-}
+mpc(sub_1)
 ```
 
-If this function is run by itself, the above function returns a data frame of timestamps and event tags. In this example, the D array is extracted from the original data file. 
-There are two issues already apparent. IFirst, the function takes the 
-arguments "startarray" and "endarray". These arguments are not actually used in the function code. Intead, the function looks for variables named "arrayb" and "arraye". These mean the same things, but the discrepancy should be corrected. Second, we always wrap the supressWarning function around the function. There's probably a better way to do this/the supressWarning should probably be in the function itself.
-```{r}
-arrayb = "D:"
-arraye = "E:"
-example_1<-mpc(sub.files[[1]][[1]], arrayb, arraye)
-```
 
-This code is what we currently use. I think all of this should go in the initial function. This is sortof documented, let me know if anything is unclear. But basically it creates a running data frame for each subject that includes all sessions. The timestamps become cummulative, so session 2 starts at the same timestamp that session 1 ends. It would probably be best to have an option to either do this cummulative method, or to keep the original timestamps with each session starting at timestamp 0. Also, a bunch of warning get spit out, but it still works. Probably should look into that.
-#===============================================================================
-# generating and joining data
-#===============================================================================
-```{r}
-# create data list
-arrayb = "D:"
-arraye = "E:"
-clean_d = list()
-
-# extract data from files and sort into data list
-
-for (i in 1:length(subject_numbers)){
-
-  # generate a running data frame to capture session records
-  run_df = data.frame(matrix(ncol=5,nrow=0))
-
-  # add columns to each session record for real-time seconds and session id
-  for(k in 1:length(sub.files[[i]])){
-    array = suppressWarnings(mpc(sub.files[[i]][[k]], arrayb, arraye))
-  sess = array
-  sess$session = k
-    
-    #add session record to the running data frame
-    run_df = rbind(run_df, sess)
-    print(paste(ids[i],toString(k)))
-  clean_d[[i]] = run_df
-  clean_d[[i]]$id = i
-  clean_d[[i]]$time_stamps = clean_d[[i]]$time_stamps/6000 #converts time from centiseconds to minutes
-  for (j in 2:length(levels(as.factor(clean_d[[i]]$session)))) {
-    clean_d[[i]]$time_stamps[clean_d[[i]]$session== j] = clean_d[[i]]$time_stamps[clean_d[[i]]$session== j]+(max(clean_d[[i]]$time_stamps[clean_d[[i]]$session == j-1]))
-    
-  }
-  }
-}
-
-
-```
 
 This code creates data frames that now have subject id numbers and group identity. It also assignes ebvent tags to specific variable names. For example, in this case .20 indicates an active lever response occured during normal session time (as opposed to when food was being delivered). It would probably be better to have id assigned based off of the raw data file, as we totally put that in the initial raw file. The tricky thing here is that the variable names are going to vary from lab to lab, project to project. The best thing to feed a function in this case is probably a vector that indicates which event tag belongs to a user specified name. In this case, I am also calculating cumulative measures. This is a common enough thing in the field that it could be useful to include as an option. This code also take forever to run, so maybe something that could be cleaned up. Potentially the best option is a function that would be called for a single event tag that could be called multiple times depending on how many variables of interest there are. The arguments it would take would be the existing data frame to add to, the event tag, and the desired name of the variable. With maybe an option for an additional cumulative version of the variable.
 #===============================================================================

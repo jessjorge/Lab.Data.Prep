@@ -1,20 +1,20 @@
-#' MPC to R Data Frame 
+#' MPC to R Data Frame
 #'
-#' This function takes a sequential list of mpc files for an individual subject, 
-#' extracts a single, user-defined array, 
-#' and creates a single data frame containing 
+#' This function takes a sequential list of mpc files for an individual subject,
+#' extracts a single, user-defined array,
+#' and creates a single data frame containing
 #' time stamps and event tags. Specifically, this function is designed to handle
 #' arrays structured with a timestamp with a decimal that identifies event type.
 #'
 #' @param x A list of mpc files for a single subject. These mpc files must first
 #' be converted into .txt file types before being imported to R.
-#' @param array A character string identifying the array to be extracted. This 
+#' @param array A character string identifying the array to be extracted. This
 #' character string should contain a single letter.
 #' @param timescale A character string identifying the timescale that timestamps
 #' should be converted to. Available timescales are: "hour", "min", "sec",
 #' and "cent".
-#' @param cummulative A logical indicating whether timestamps should be 
-#' merged cumulatively across sessions. If FALSE, time will be treated 
+#' @param cummulative A logical indicating whether timestamps should be
+#' merged cumulatively across sessions. If FALSE, time will be treated
 #' independently for each session.
 #'
 #' @returns A data frame containing subject id, session id, timestamps, and
@@ -50,7 +50,7 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
     )
     long_data <- data.frame()
     row_index <- 1
-    for (i in 1:nrow(filtered_data)) {
+    for (i in seq_len(filtered_data)) {
       for (j in 3:7) {
         long_data[row_index, 1] <- filtered_data[i, j]
         row_index <- row_index + 1
@@ -66,7 +66,7 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
       event_tags = numeric()
     )
 
-    for (i in 1:nrow(long_data)) {
+    for (i in seq_len(long_data)) {
       times_events[i, 1] <- floor(long_data[i, 1])
       times_events[i, 2] <- long_data[i, 1] - times_events[i, 1]
     }
@@ -79,7 +79,7 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
     new_vec[[c]] <- df
   }
 
-  # merge data frames from list into one data frame 
+  # merge data frames from list into one data frame
   merged_df <- do.call(rbind, Map(cbind, session = seq_along(new_vec), new_vec))
   merged_df$id <- id
 
@@ -93,7 +93,9 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   } else if (timescale == "cent") {
     merged_df$time_stamps <- merged_df$time_stamps
   } else {
-    warning(paste("Timescale argument", paste("'", timescale, "'", sep = ""), "not recognized. Available arguments are: 'hour','min','sec','cent'. Centiseconds have been retained."))
+    warning(paste("Timescale argument", paste("'", timescale, "'", sep = ""),
+    "not recognized. Available arguments are: 'hour','min','sec','cent'.
+    Centiseconds have been retained."))
   }
 
   # make time cumulative
