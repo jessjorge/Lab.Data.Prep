@@ -11,13 +11,14 @@
 
 \item{y}{This variable is ignored.}
 
+\item{measure}{This variable allows the user to specify what was being
+measured in the trial.}
+
 \item{time_stamps}{Variable that will be plotted on the x-axis}
 
 \item{value}{Variable that will be plotted on the y-axis}
 
 \item{...}{Placeholder for further arguments.}
-
-\item{timestamp}{A measure of time that will be converted to hours}
 }
 \value{
 The function returns a visual of plotted data.
