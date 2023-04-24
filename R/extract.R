@@ -7,25 +7,22 @@
 #' subject.
 #'
 #' @export
-extract <- function(prefix, subject_numbers) {
+extract <- function(prefix, subj_nums) {
   suffix <- ".txt"
-
   ids <- c()
-  for (s in seq_along(subject_numbers)) {
-    ids[s] <- paste(toString(subject_numbers[s]), suffix, sep = "")
+  for (s in seq_along(subj_nums)){
+    ids[s] <- paste(toString(subj_nums[s]), suffix, sep = "")
     ids[s] <- paste(prefix, toString(ids[s]), sep = "")
     ids[s] <- paste0(ids[s], "$")
   }
-  sub.files <- list()
-
-  for (s in seq_along(subject_numbers)) {
+  sub_files <- list()
+  for (s in seq_along(subj_nums)){
     filenames <- list.files(pattern = ids[[s]])
-    sub.files[[s]] <- list()
+    sub_files[[s]] <- list()
     for (f in seq_along(filenames)) {
-      sub.files[[s]][[f]] <- read.delim(filenames[f])
+      sub_files[[s]][[f]] <- read.delim(filenames[f])
     }
-    names(sub.files[[s]]) <- filenames
+    names(sub_files[[s]]) <- filenames
   }
-
-  sub.files
+  sub_files
 }

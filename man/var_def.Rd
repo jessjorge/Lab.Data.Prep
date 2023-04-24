@@ -2,19 +2,19 @@
 % Please edit documentation in R/var_def.R
 \name{var_def}
 \alias{var_def}
-\title{Title}
+\title{Variable Define Function}
 \usage{
 var_def(df, event_tags, cumulative = TRUE)
 }
 \arguments{
-\item{df}{Describe parameter here}
+\item{df}{Dataframe that is being fed into the function.}
 
-\item{event_tags}{Describe parameter here}
+\item{event_tags}{Describes which event took place.}
 
-\item{cumulative}{Describe parameter here}
+\item{cumulative}{Whether or not time is being added over sessions.}
 }
 \value{
-Describe what it returns here
+This function returns
 }
 \description{
 Function description
