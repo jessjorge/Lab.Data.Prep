@@ -14,7 +14,7 @@
 #' are identical to the input dataframe, df, but with additional columns
 #' including dummy variables for unique events and corresponding cumulative
 #' columns.
-#' @example
+#' @examples
 #' #-------------------------------------
 #' ev_tags <- c(
 #' "0.111" = "beginning",

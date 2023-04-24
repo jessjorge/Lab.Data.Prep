@@ -28,4 +28,32 @@ columns.
 }
 \description{
 Define Dummy Variables
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+}
+\examples{
+#-------------------------------------
+ev_tags <- c(
+"0.111" = "beginning",
+"0.2" = "rat given mate",
+"0.25" = "rat given steroids",
+"0.4" = "water withdrawn, doom impending",
+"0.41" = "rat got prodded",
+"0.42" = "rat fights snake, wins",
+"0.6" = "rat got poked",
+"0.61" = "rat fights snake, loses",
+"0.65" = "rat played dress-up",
+"0.999" = "gave rat some LSD"
+)
+
+df <- mpc(sub.files[[1]], "d")
+
+my_x <- var_def(df, ev_tags)
+
+#-------------------------------------
+
+>>>>>>> 167e01cec5569bf1c67da0ee864175602f04c5bd
+>>>>>>> 07dbe01260968b6ed0fa9ec85ff97f1d829aa69e
 }
