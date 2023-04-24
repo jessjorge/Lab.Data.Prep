@@ -1,3 +1,4 @@
+
 # df := a dataframe with 4 columns (session, time_stamps, event_tags, id)
 # event_tags := essentially a dictionary of key_value pairs
 # which map event_tag values to a variable name
@@ -18,6 +19,19 @@ ev_tags <- c(
 
 df <- mpc(sub.files[[1]], "d")
 
+#' Title
+#'
+#' Function description
+#'
+#' @param df Describe parameter here
+#'
+#' @param event_tags Describe parameter here
+#'
+#' @param cumulative Describe parameter here
+#'
+#' @returns Describe what it returns here
+#'
+#' @export
 var_def <- function(df, event_tags, cumulative = TRUE) {
 
   # Keep a subset of the columns which does not include the event tag col
