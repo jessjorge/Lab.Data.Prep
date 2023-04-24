@@ -1,15 +1,14 @@
-
-#' Title
+#' Variable Define Function
 #'
 #' Function description
 #'
-#' @param df Describe parameter here
+#' @param df Dataframe that is being fed into the function.
 #'
-#' @param event_tags Describe parameter here
+#' @param event_tags Describes which event took place.
 #'
-#' @param cumulative Describe parameter here
+#' @param cumulative Whether or not time is being added over sessions.
 #'
-#' @returns Describe what it returns here
+#' @returns This function returns
 #'
 #' @export
 var_def <- function(df, event_tags, cumulative = TRUE) {
