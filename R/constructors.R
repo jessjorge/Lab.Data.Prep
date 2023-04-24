@@ -1,6 +1,13 @@
-# Constructors
-
-
+#' Helper functions that creates object of the med class
+#'
+#' This function takes the output of the 'var_def' function. It then makes sure
+#' all of the data is in long form. After making sure the data is in the
+#' right form, it then turns it into an object of class med.
+#'
+#' @param x The function returns a data frame.
+#'
+#' @returns The function returns an object of class med.
+#' @export
 
 new_med <- function(x) {
 
