@@ -3,4 +3,5 @@
 S3method(plot,med)
 export(extract)
 export(mpc)
+export(new_med)
 export(var_def)
