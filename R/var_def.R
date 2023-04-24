@@ -1,5 +1,8 @@
 #' Define Dummy Variables
 #' @name var_def
+#' @description This function takes a dataframe output by mpc and returns a
+#' new one with dummy variables for each unique event type. The user must pass
+#' in a dictionary specifying what the event types should be.
 #' @param df Dataframe that is being fed into the function. It is essential
 #' that this dataframe be output by the mpc function, also defined in this
 #' package. You may pass in a different dataframe but the format must be
@@ -10,6 +13,8 @@
 #' dataframe.
 #' @param cumulative If set to TRUE, the function will also output columns
 #' that keep track of the total number of times a particular event took place.
+#' @param long Set to TRUE by default. This argument tells the function to call
+#' the new_med constructor before returning the dataframe.
 #' @returns This function returns a dataframe x, whose first three columns
 #' are identical to the input dataframe, df, but with additional columns
 #' including dummy variables for unique events and corresponding cumulative
@@ -37,7 +42,7 @@
 #'
 #' @export
 
-var_def <- function(df, event_tags, cumulative = TRUE) {
+var_def <- function(df, event_tags, cumulative = TRUE, long = TRUE) {
 
   # Keep a subset of the columns which does not include the event tag col
   x <- df[,c(1,2,4)]
@@ -70,6 +75,11 @@ var_def <- function(df, event_tags, cumulative = TRUE) {
       cumname <- paste(col, " (cumulative)")
       x[cumname] <- cumsum(x[col] == 1)
     }
+  }
+
+  # Call the constructor
+  if(long == TRUE){
+    new_med(x)
   }
 
   return(x)
