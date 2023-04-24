@@ -2,20 +2,30 @@
 % Please edit documentation in R/var_def.R
 \name{var_def}
 \alias{var_def}
-\title{Variable Define Function}
+\title{Define Dummy Variables}
 \usage{
 var_def(df, event_tags, cumulative = TRUE)
 }
 \arguments{
-\item{df}{Dataframe that is being fed into the function.}
+\item{df}{Dataframe that is being fed into the function. It is essential
+that this dataframe be output by the mpc function, also defined in this
+package. You may pass in a different dataframe but the format must be
+identical to that of an mpc output.}
 
-\item{event_tags}{Describes which event took place.}
+\item{event_tags}{A dictionary consisting of key value pairs. The
+keys should correspond to all unique "event code" entries and the values
+should be event names. These names will become the columns of the output
+dataframe.}
 
-\item{cumulative}{Whether or not time is being added over sessions.}
+\item{cumulative}{If set to TRUE, the function will also output columns
+that keep track of the total number of times a particular event took place.}
 }
 \value{
-This function returns
+This function returns a dataframe x, whose first three columns
+are identical to the input dataframe, df, but with additional columns
+including dummy variables for unique events and corresponding cumulative
+columns.
 }
 \description{
-Function description
+Define Dummy Variables
 }
