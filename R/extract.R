@@ -11,17 +11,17 @@ extract <- function(prefix, subject_numbers) {
   suffix <- ".txt"
 
   ids <- c()
-  for (s in 1:length(subject_numbers)) {
+  for (s in seq_along(subject_numbers)) {
     ids[s] <- paste(toString(subject_numbers[s]), suffix, sep = "")
     ids[s] <- paste(prefix, toString(ids[s]), sep = "")
     ids[s] <- paste0(ids[s], "$")
   }
   sub.files <- list()
 
-  for (s in 1:length(subject_numbers)) {
+  for (s in seq_along(subject_numbers)) {
     filenames <- list.files(pattern = ids[[s]])
     sub.files[[s]] <- list()
-    for (f in 1:length(filenames)) {
+    for (f in seq_along(filenames)) {
       sub.files[[s]][[f]] <- read.delim(filenames[f])
     }
     names(sub.files[[s]]) <- filenames
