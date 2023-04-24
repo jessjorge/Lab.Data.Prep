@@ -42,7 +42,7 @@
 #'
 #' @export
 
-var_def <- function(df, event_tags, cumulative = TRUE, long = TRUE) {
+var_def <- function(df, event_tags, cumulative = TRUE) {
 
   # Keep a subset of the columns which does not include the event tag col
   x <- df[,c(1,2,4)]
@@ -56,11 +56,6 @@ var_def <- function(df, event_tags, cumulative = TRUE, long = TRUE) {
 
       # If the row's event tag corresponds to the current event tag...
       if (df$event_tags[i] == event_tag){
-
-        # This statement is to help us produce long format data.
-        if(long == TRUE){
-          x$measure[i] <- event_tags[event_tag]
-        }
 
         # Assign length (probably a 1) to the column corresponding to
         # the event tag and each unique timestamp. Note that this code will
@@ -101,8 +96,6 @@ ev_tags <- c(
   "0.999" = "gave rat some LSD"
 )
 
-
-setwd("data")
 sub.files <- extract("DF", c(21:30))
 df <- mpc(sub.files[[1]], "d")
 my_x <- var_def(df, ev_tags)
