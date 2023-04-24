@@ -9,7 +9,8 @@ library(tidyr)
 
 #' Generic Plot Function
 #'
-#' ADD THE DESCRIPTION HERE
+#' This function takes in our our newly cleaned data. It then plots the data
+#' allowing researchers to see a visual representation of their data.
 #'
 #' @param timestamp A measure of time that will be converted to hours
 #'
@@ -17,7 +18,7 @@ library(tidyr)
 #'
 #' @param y This variable is ignored.
 #'
-#' @param time_stamp Variable that will be plotted on the x-axis
+#' @param time_stamps Variable that will be plotted on the x-axis
 #'
 #' @param value Variable that will be plotted on the y-axis
 #'
@@ -27,21 +28,14 @@ library(tidyr)
 #' @returns The function returns a visual of plotted data.
 #'
 #' @export
-generic_plot <- function(x, y, measure, time_stamp, value, ...) {
+plot.med <- function(x, y, measure, time_stamps = time_stamps,
+                         value = value, ...) {
 
-  # Putting our data into "long form" in order to prepare it for graphing
-  # Essentially eliminating columns in favor of more rows
-  x <- x |>
-    tidyverse::pivot_longer(
-      cols = c(3:6),
-      names_to = "measure",
-      values_to = "value"
-    )
   # Plots the data using the specified preferences
   x |>
     filter(measure == measure) |>
     ggplot() +
-    geom_step(aes(x = {{ time_stamp }}, y = {{ value }}), size = .25) +
+    geom_step(aes(x = {{ time_stamps }}, y = {{ value }}), size = .25) +
     labs(x = "Time", y = "Cummulative Responses") +
     theme_prism(base_size = 11, base_line_size = 0.30) +
     scale_x_continuous(expand = c(0, 0)) +
@@ -49,11 +43,5 @@ generic_plot <- function(x, y, measure, time_stamp, value, ...) {
 }
 
 # NOTES FROM DRBEAN
-# *Test that the function works before doing the following steps to make it a
-# generic
-#
-# -Need to make a class function
-# -call plot.class()
-#
 # --Add depends/imports (we need to depend for ggplot2). We have to depend for
 # tidyverse because it isn't actually a package
