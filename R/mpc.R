@@ -93,17 +93,14 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   } else if (timescale == "cent") {
     merged_df$time_stamps <- merged_df$time_stamps
   } else {
-<<<<<<< HEAD
     warning(paste("Timescale argument", paste("'", timescale, "'", sep = ""),
     "not recognized. Available arguments are: 'hour','min','sec','cent'.
     Centiseconds have been retained."))
-=======
     warning(paste(
       "Timescale argument", paste("'", timescale, "'", sep = ""),
       "not recognized. Available arguments are: 'hour','min','sec',
                   'cent'. Centiseconds have been retained."
     ))
->>>>>>> b74fe1f87c394a243a9168da95e922016ce111f9
   }
 
   # make time cumulative
