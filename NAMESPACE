@@ -3,3 +3,4 @@
 export(extract)
 export(generic_plot)
 export(mpc)
+export(var_def)
