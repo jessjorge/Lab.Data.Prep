@@ -63,6 +63,13 @@ var_def <- function(df, event_tags, cumulative = TRUE, long = TRUE) {
         x[i, event_tags[event_tag]] <- length(
           df$event_tags[df$event_tags == event_tag &
                           df$time_stamps == df$time_stamps[i]])
+
+        # Now make a column of long format data if user wants it
+        if(long == TRUE){
+          x$measure[i] <- event_tags[event_tag]
+        }
+
+
       } else{
         x[i, event_tags[event_tag]] <- 0
       }
@@ -77,10 +84,24 @@ var_def <- function(df, event_tags, cumulative = TRUE, long = TRUE) {
     }
   }
 
-  # Call the constructor
-  if(long == TRUE){
-    x <- new_med(x)
-  }
-
   return(x)
+
 }
+
+
+ev_tags <- c(
+  "0.111" = "beginning",
+  "0.2" = "rat given mate",
+  "0.25" = "rat given steroids",
+  "0.4" = "water withdrawn, doom impending",
+  "0.41" = "rat got prodded",
+  "0.42" = "rat fights snake, wins",
+  "0.6" = "rat got poked",
+  "0.61" = "rat fights snake, loses",
+  "0.65" = "rat played dress-up",
+  "0.999" = "gave rat some LSD"
+)
+
+df <- mpc(sub.files[[1]], "d")
+
+my_x <- var_def(df, ev_tags)
