@@ -28,10 +28,6 @@ columns.
 }
 \description{
 Define Dummy Variables
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-=======
 }
 \examples{
 #-------------------------------------
@@ -54,6 +50,4 @@ my_x <- var_def(df, ev_tags)
 
 #-------------------------------------
 
->>>>>>> 167e01cec5569bf1c67da0ee864175602f04c5bd
->>>>>>> 07dbe01260968b6ed0fa9ec85ff97f1d829aa69e
 }
