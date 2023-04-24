@@ -38,7 +38,7 @@ extract <- function(prefix, subj_nums) {
 
   sub.files
 }
-#=======
+# =======
 # Tyson
 #' @title Extract Function
 #' @description
@@ -57,13 +57,13 @@ extract <- function(prefix, subj_nums) {
 extract <- function(prefix, subj_nums) {
   suffix <- ".txt"
   ids <- c()
-  for (s in seq_along(subj_nums)){
+  for (s in seq_along(subj_nums)) {
     ids[s] <- paste(toString(subj_nums[s]), suffix, sep = "")
     ids[s] <- paste(prefix, toString(ids[s]), sep = "")
     ids[s] <- paste0(ids[s], "$")
   }
   sub_files <- list()
-  for (s in seq_along(subj_nums)){
+  for (s in seq_along(subj_nums)) {
     filenames <- list.files(pattern = ids[[s]])
     sub_files[[s]] <- list()
     for (f in seq_along(filenames)) {
