@@ -1,7 +1,7 @@
 #' @param prefix A character prefix for the filename specifying what type of
 #' file you want to pull the data from. Ex: "DF"
-#' @param subject_numbers A vector of the precise numbers of the subjects you are
-#' interested in. Ex: 21:30
+#' @param subject_numbers A vector of the precise numbers of the subjects
+#' you are interested in. Ex: 21:30
 #'
 #' @returns A list of dataframes, with each dataframe belonging to a different
 #' subject.
