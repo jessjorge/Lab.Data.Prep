@@ -24,7 +24,7 @@ library(tidyr)
 #' @param ... Placeholder for further arguments.
 #'
 #' @examples
-#' @returns The function returns a visual of plotted data
+#' @returns The function returns a visual of plotted data.
 #'
 #' @export
 generic_plot <- function(x, y, measure, time_stamp, value, ...) {
