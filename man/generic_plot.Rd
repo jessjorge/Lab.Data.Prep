@@ -4,7 +4,13 @@
 \alias{generic_plot}
 \title{Generic Plot Function}
 \usage{
-generic_plot(data = x, mapping = aes(), ..., environment = parent.frame())
+generic_plot(
+  data = x,
+  measure,
+  mapping = aes(),
+  ...,
+  environment = parent.frame()
+)
 }
 \arguments{
 \item{timestamp}{A measure of time that will be converted to hours}

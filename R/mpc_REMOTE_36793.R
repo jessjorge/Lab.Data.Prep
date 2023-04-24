@@ -50,7 +50,7 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
     )
     long_data <- data.frame()
     row_index <- 1
-    for (i in seq_len(filtered_data)) {
+    for (i in 1:nrow(filtered_data)) {
       for (j in 3:7) {
         long_data[row_index, 1] <- filtered_data[i, j]
         row_index <- row_index + 1
@@ -66,7 +66,7 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
       event_tags = numeric()
     )
 
-    for (i in seq_len(long_data)) {
+    for (i in 1:nrow(long_data)) {
       times_events[i, 1] <- floor(long_data[i, 1])
       times_events[i, 2] <- long_data[i, 1] - times_events[i, 1]
     }
@@ -93,17 +93,11 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   } else if (timescale == "cent") {
     merged_df$time_stamps <- merged_df$time_stamps
   } else {
-<<<<<<< HEAD
-    warning(paste("Timescale argument", paste("'", timescale, "'", sep = ""),
-    "not recognized. Available arguments are: 'hour','min','sec','cent'.
-    Centiseconds have been retained."))
-=======
     warning(paste(
       "Timescale argument", paste("'", timescale, "'", sep = ""),
       "not recognized. Available arguments are: 'hour','min','sec',
                   'cent'. Centiseconds have been retained."
     ))
->>>>>>> b74fe1f87c394a243a9168da95e922016ce111f9
   }
 
   # make time cumulative
