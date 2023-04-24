@@ -79,7 +79,7 @@ var_def <- function(df, event_tags, cumulative = TRUE, long = TRUE) {
 
   # Call the constructor
   if(long == TRUE){
-    new_med(x)
+    x <- new_med(x)
   }
 
   return(x)
