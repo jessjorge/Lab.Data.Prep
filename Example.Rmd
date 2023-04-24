@@ -41,7 +41,7 @@ for (s in 1:length(subject_numbers)){
 
 
 ```{r}
-mpc(sub_1)
+df<-mpc(sub.files[[1]],"d")
 ```
 
 

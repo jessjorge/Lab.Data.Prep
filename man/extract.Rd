@@ -5,6 +5,8 @@
 \title{Extract Function}
 \usage{
 extract(prefix, subj_nums)
+
+extract(prefix, subj_nums)
 }
 \arguments{
 \item{prefix}{A character prefix for the filename specifying what type of
@@ -14,10 +16,17 @@ file you want to pull the data from. Ex: "DF"}
 interested in. Ex: 21:30}
 }
 \value{
-Returns a list of dataframes, with each dataframe belonging to a different
+A list of dataframes, with each dataframe belonging to a different
 subject.
+
+Returns a list of dataframes, with each dataframe belonging to a
+different subject.
 }
 \description{
+This function extracts the data from the multiple files generated from the
+experiment and stores it into a list of dataframe objects, one for each
+subject.
+
 This function extracts the data from the multiple files generated from the
 experiment and stores it into a list of dataframe objects, one for each
 subject.

@@ -4,30 +4,24 @@
 \alias{generic_plot}
 \title{Generic Plot Function}
 \usage{
-generic_plot(
-  data = x,
-  measure,
-  mapping = aes(),
-  ...,
-  environment = parent.frame()
-)
+generic_plot(x, y, measure, time_stamp, value, ...)
 }
 \arguments{
-\item{timestamp}{A measure of time that will be converted to hours}
+\item{x}{A data frame that contains the values from our research.}
 
-\item{x}{A data frame}
+\item{y}{This variable is ignored.}
+
+\item{time_stamp}{Variable that will be plotted on the x-axis}
+
+\item{value}{Variable that will be plotted on the y-axis}
+
+\item{...}{Placeholder for further arguments.}
+
+\item{timestamp}{A measure of time that will be converted to hours}
 }
 \value{
 The function returns a visual of plotted data
 }
 \description{
-This function plots two different scenarios. One of the scenarios is a
-cumulative one. Essentially, the cumulative case takes the result of
-calculations created by the extract, mpc, and var_def functions; it then
-plots them. The second scenario has this function plotting specific session
-wide variables.
-}
-\examples{
-PUT SOMETHING HERE
-
+ADD THE DESCRIPTION HERE
 }
