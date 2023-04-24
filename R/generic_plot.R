@@ -12,11 +12,12 @@ library(tidyr)
 #' This function takes in our our newly cleaned data. It then plots the data
 #' allowing researchers to see a visual representation of their data.
 #'
-#' @param timestamp A measure of time that will be converted to hours
-#'
 #' @param x A data frame that contains the values from our research.
 #'
 #' @param y This variable is ignored.
+#'
+#' @param measure This variable allows the user to specify what was being
+#' measured in the trial.
 #'
 #' @param time_stamps Variable that will be plotted on the x-axis
 #'
@@ -24,12 +25,11 @@ library(tidyr)
 #'
 #' @param ... Placeholder for further arguments.
 #'
-#' @examples
 #' @returns The function returns a visual of plotted data.
 #'
 #' @export
 plot.med <- function(x, y, measure, time_stamps = time_stamps,
-                         value = value, ...) {
+                     value = value, ...) {
 
   # Plots the data using the specified preferences
   x |>

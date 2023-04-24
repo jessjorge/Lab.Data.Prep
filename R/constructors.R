@@ -1,8 +1,8 @@
-#Constructors
+# Constructors
 
 
 
-new_med <- function(x){
+new_med <- function(x) {
 
   # Putting our data into "long form" in order to prepare it for graphing
   # Essentially eliminating columns in favor of more rows

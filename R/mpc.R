@@ -34,12 +34,12 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
     text_data <- rbind(text_data, x[[c]])
 
     suppressWarnings(split_data <- tidyr::separate(text_data,
-                     col = 1,
-                     into = c(
-                     "Col1", "Col2", "Col3", "Col4", "Col5",
-                     "Col6", "Col7"
-                                   ),
-                      sep = " +"
+      col = 1,
+      into = c(
+        "Col1", "Col2", "Col3", "Col4", "Col5",
+        "Col6", "Col7"
+      ),
+      sep = " +"
     ))
     id <- split_data[3, 2]
     start_row <- which(split_data$Col1 == startarray)
@@ -93,10 +93,12 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   } else if (timescale == "cent") {
     merged_df$time_stamps <- merged_df$time_stamps
   } else {
-    warning(paste("Timescale argument", paste("'", timescale, "'", sep = ""),
-                  "not recognized.
+    warning(paste(
+      "Timescale argument", paste("'", timescale, "'", sep = ""),
+      "not recognized.
                   Available arguments are: 'hour','min','sec','cent'.
-                  Centiseconds have been retained."))
+                  Centiseconds have been retained."
+    ))
   }
 
   # make time cumulative
