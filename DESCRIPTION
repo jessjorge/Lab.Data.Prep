@@ -1,14 +1,16 @@
 Package: Lab.Data.Prep
 Title: Med-PC Data Analysis Tools
 Version: 0.0.0.9000
-Authors@R: 
-    c(person("Tyson", "Ashcraft", "a02070385@usu.edu",role = c("aut", "cre")),
-      person("Hyrum", "Hansen", "hyrum.hansen1@gmail.com",
-          role = c("aut", "cre")),
-      person("Jessica", "Jorgensen", "jessicajorgensen82@gmail.com", 
-          role = c("aut", "cre")),
-      person("Gabrielle", "Sutton", "gabrielle.sutton@usu.edu", 
-          role = c("aut", "cre")))
+Authors@R: c(
+    person("Gabrielle", "Sutton", email = "gabrielle.sutton@usu.edu",
+    role = c("aut", "cre")),
+    person("Tyson", "Ashcraft", email = "a02070385@usu.edu", 
+    role = c("aut")),
+    person("Hyrum", "Hansen", email = "hyrum.hansen1@gmail.com", 
+    role = c("aut")),
+    person("Jessica", "Jorgensen", email = "jessicajorgensen82@gmail.com", 
+    role = c("aut"))
+  )
 Description: This package takes data from labs that collect data using MedPC
       software.It extracts the data from mpc text files. A specific variable
       may be selected and a cummulative record may be generated. 
@@ -17,9 +19,7 @@ Encoding: UTF-8
 Depends: 
   tidyverse
 Imports: 
-  tidyr, 
-  ggprism, 
-  ggplot2, 
+  tidyr,
   dplyr, 
   stringr
 Roxygen: list(markdown = TRUE)
