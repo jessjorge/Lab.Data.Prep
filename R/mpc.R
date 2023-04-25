@@ -19,6 +19,12 @@
 #'
 #' @returns A data frame containing subject id, session id, timestamps, and
 #' associated event tags.
+#'
+#' @examples
+#' x<-extract("EB",11)
+#' df<-mpc(x[[1]], "d")
+#' df
+#'
 #' @export
 mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   # parsing text array into a data frame

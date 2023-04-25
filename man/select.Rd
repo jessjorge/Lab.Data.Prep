@@ -8,6 +8,9 @@ select(x, variable)
 }
 \arguments{
 \item{x}{A data frame.}
+
+\item{variable}{The variable of interest, will be the second column in the
+matrix.}
 }
 \value{
 The function returns an object of class med.
