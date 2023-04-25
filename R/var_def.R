@@ -13,8 +13,6 @@
 #' dataframe.
 #' @param cumulative If set to TRUE, the function will also output columns
 #' that keep track of the total number of times a particular event took place.
-#' @param long Set to TRUE by default. This argument tells the function to call
-#' the new_med constructor before returning the dataframe.
 #' @returns This function returns a dataframe x, whose first three columns
 #' are identical to the input dataframe, df, but with additional columns
 #' including dummy variables for unique events and corresponding cumulative
