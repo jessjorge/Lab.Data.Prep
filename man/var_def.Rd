@@ -19,6 +19,9 @@ dataframe.}
 
 \item{cumulative}{If set to TRUE, the function will also output columns
 that keep track of the total number of times a particular event took place.}
+
+\item{long}{Set to TRUE by default. This argument tells the function to call
+the new_med constructor before returning the dataframe.}
 }
 \value{
 This function returns a dataframe x, whose first three columns
@@ -27,7 +30,9 @@ including dummy variables for unique events and corresponding cumulative
 columns.
 }
 \description{
-Define Dummy Variables
+This function takes a dataframe output by mpc and returns a
+new one with dummy variables for each unique event type. The user must pass
+in a dictionary specifying what the event types should be.
 }
 \examples{
 #-------------------------------------

@@ -1,25 +1,37 @@
 #' Helper functions that creates object of the med class
 #'
-#' This function takes the output of the 'var_def' function. It then makes sure
-#' all of the data is in long form. After making sure the data is in the
-#' right form, it then turns it into an object of class med.
+#' This function takes a matrix and returns an object of class med.
 #'
-#' @param x The function returns a data frame.
+#' @param x A matrix.
 #'
 #' @returns The function returns an object of class med.
 #' @export
 
-new_med <- function(x) {
-
-  # Putting our data into "long form" in order to prepare it for graphing
-  # Essentially eliminating columns in favor of more rows
-  x <- x |>
-    tidyr::pivot_longer(
-      cols = c(4:ncol(x)),
-      names_to = "measure",
-      values_to = "value"
-    )
-
-  # Labeling it as the correct class
+med <- function(x) {
   structure(x, class = "med")
 }
+
+#' Selects a variable for plotting.
+#'
+#' This function takes a data frame from the var_def function and selects
+#' a variable of interest. A matrix is then generated and converted into the
+#' med class that can then be passed into a generic plotting function to
+#' generate a cummulative record.
+#'
+#' @param x A data frame.
+#'
+#' @returns The function returns an object of class med.
+#' @export
+
+select<- function(x, variable){
+x <- x |>
+  tidyr::pivot_longer(
+    cols = c(4:ncol(x)),
+    names_to = "measure",
+    values_to = "value"
+  )
+x<- x |> dplyr::filter(measure == variable)
+x<- x[,c(2,5)]
+x<- as.matrix(x)
+x<- med(x)
+  }

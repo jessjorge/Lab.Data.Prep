@@ -11,17 +11,15 @@ date: "2023-03-30"
 ---
 
 ```{r}
-
+setwd("data")
+subs<-extract("DF",c(21:30))
 ```
 
 
 ```{r}
-df<-mpc(sub.files[[1]],"d")
+df<-mpc(subs[[1]],"d")
 ```
 
-
-
-This code creates data frames that now have subject id numbers and group identity. It also assignes ebvent tags to specific variable names. For example, in this case .20 indicates an active lever response occured during normal session time (as opposed to when food was being delivered). It would probably be better to have id assigned based off of the raw data file, as we totally put that in the initial raw file. The tricky thing here is that the variable names are going to vary from lab to lab, project to project. The best thing to feed a function in this case is probably a vector that indicates which event tag belongs to a user specified name. In this case, I am also calculating cumulative measures. This is a common enough thing in the field that it could be useful to include as an option. This code also take forever to run, so maybe something that could be cleaned up. Potentially the best option is a function that would be called for a single event tag that could be called multiple times depending on how many variables of interest there are. The arguments it would take would be the existing data frame to add to, the event tag, and the desired name of the variable. With maybe an option for an additional cumulative version of the variable.
 
 ```{r}
 new_df<-var_def(df,c(
@@ -38,8 +36,11 @@ new_df<-var_def(df,c(
 ), cumulative = TRUE)
 ```
 
+```{r}
+isolate<-select(new_df, "gave rat some LSD  (cumulative)")
+```
 
-I think the best way to handle plotting is to restrict ourselves to 2 types. One that generates a cumulative record from all the code above, and another that deals with the simpler, session wide variables that I don't actually have an example of because we normally do that in excel. So here would be an example of cumulative records. First, the data frames are combined into one giant one that contains all data from all subjects. In this case, the timestamp is converted to hours, which could be an argument to a plotting function. Also, part of this code is selecting colums by colnumber, and that could be different. Probably could have an option to facet based off a grouping variable.
+
 ```{r}
 library(ggprism)
 final_d_df = data.frame()
