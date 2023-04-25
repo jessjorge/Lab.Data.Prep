@@ -20,7 +20,3 @@ plot.med <- function(x, y, ...) {
     main = "Cumulative Record"
   )
 }
-
-# NOTES FROM DRBEAN
-# --Add depends/imports (we need to depend for ggplot2). We have to depend for
-# tidyverse because it isn't actually a package
