@@ -1,11 +1,26 @@
 Package: Lab.Data.Prep
-Title: What the Package Does (One Line, Title Case)
+Title: Med-PC Data Analysis Tools
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+    c(person("Tyson", "Ashcraft", "a02070385@usu.edu",role = c("aut", "cre")),
+      person("Hyrum", "Hansen", "hyrum.hansen1@gmail.com",
+          role = c("aut", "cre")),
+      person("Jessica", "Jorgensen", "jessicajorgensen82@gmail.com", 
+          role = c("aut", "cre")),
+      person("Gabrielle", "Sutton", "gabrielle.sutton@usu.edu", 
+          role = c("aut", "cre")))
+Description: This package takes data from labs that collect data using MedPC
+      software.It extracts the data from mpc text files. A specific variable
+      may be selected and a cummulative record may be generated. 
 License: GPL (>= 3)
 Encoding: UTF-8
+Depends: 
+  tidyverse
+Imports: 
+  tidyr, 
+  ggprism, 
+  ggplot2, 
+  dplyr, 
+  stringr
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
