@@ -9,13 +9,15 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "man/figures/README-",
-  out.width = "100%"
+  out.width = "100%",
+  root.dir = "data"
 )
 ```
 
 # Lab.Data.Prep
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/jessjorge/Lab.Data.Prep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jessjorge/Lab.Data.Prep/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The Lab Data Prep package is designed to streamline some common laboratory data prep tasks. Rat study data is often delivered in a format that is difficult to understand and work with; however, many of the data cleaning tasks are routine. This package consolidates these routine tasks into a few simple functions that can be called with ease, and provides a plotting utility function to use after data conversion. What formerly took a few hundred lines of code is now just a few function calls away. 
@@ -35,9 +37,6 @@ Med PC is the program used for data collection in this laboratory setting. The *
 
 ```{r example}
 library(Lab.Data.Prep)
-
-# Set working directory to a data folder
-setwd("data")
 
 # Extract files with a given subject number
 subs<-extract("EB",c(11))

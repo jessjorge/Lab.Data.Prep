@@ -4,6 +4,8 @@
 # Lab.Data.Prep
 
 <!-- badges: start -->
+
+[![R-CMD-check](https://github.com/jessjorge/Lab.Data.Prep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jessjorge/Lab.Data.Prep/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The Lab Data Prep package is designed to streamline some common
@@ -32,26 +34,6 @@ setting. The **mpc** function produces an mpc dataframe.
 
 ``` r
 library(Lab.Data.Prep)
-#> Loading required package: tidyverse
-#> -- Attaching packages --------------------------------------- tidyverse 1.3.1 --
-#> v ggplot2 3.4.2     v purrr   0.3.4
-#> v tibble  3.1.6     v dplyr   1.0.7
-#> v tidyr   1.1.4     v stringr 1.4.0
-#> v readr   2.1.1     v forcats 0.5.1
-#> -- Conflicts ------------------------------------------ tidyverse_conflicts() --
-#> x dplyr::filter() masks stats::filter()
-#> x dplyr::lag()    masks stats::lag()
-#> 
-#> Attaching package: 'Lab.Data.Prep'
-#> The following object is masked from 'package:dplyr':
-#> 
-#>     select
-#> The following object is masked from 'package:tidyr':
-#> 
-#>     extract
-
-# Set working directory to a data folder
-setwd("data")
 
 # Extract files with a given subject number
 subs<-extract("EB",c(11))
