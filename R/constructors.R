@@ -24,15 +24,15 @@ med <- function(x) {
 #' @returns The function returns an object of class med.
 #' @export
 
-select<- function(x, variable){
-x <- x |>
-  tidyr::pivot_longer(
-    cols = c(4:ncol(x)),
-    names_to = "measure",
-    values_to = "value"
-  )
-x<- x |> dplyr::filter(measure == variable)
-x<- x[,c(2,5)]
-x<- as.matrix(x)
-x<- med(x)
-  }
+select <- function(x, variable) {
+  x <- x |>
+    tidyr::pivot_longer(
+      cols = c(4:ncol(x)),
+      names_to = "measure",
+      values_to = "value"
+    )
+  x <- x |> dplyr::filter(measure == variable)
+  x <- x[, c(2, 5)]
+  x <- as.matrix(x)
+  x <- med(x)
+}

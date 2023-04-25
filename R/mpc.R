@@ -21,8 +21,8 @@
 #' associated event tags.
 #'
 #' @examples
-#' x<-extract("EB",11)
-#' df<-mpc(x[[1]], "d")
+#' x <- extract("EB", 11)
+#' df <- mpc(x[[1]], "d")
 #' df
 #'
 #' @export

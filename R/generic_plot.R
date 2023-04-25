@@ -14,11 +14,11 @@
 #'
 #' @export
 plot.med <- function(x, y, ...) {
-
   # Plots the data using the specified preferences
-    plot(x[,'time_stamps'], x[,'value'],
-         type = 's', xlab = "Time Stamp", ylab = "Response",
-         main = "Cumulative Record")
+  plot(x[, "time_stamps"], x[, "value"],
+    type = "s", xlab = "Time Stamp", ylab = "Response",
+    main = "Cumulative Record"
+  )
 }
 
 # NOTES FROM DRBEAN
