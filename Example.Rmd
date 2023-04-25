@@ -35,7 +35,7 @@ isolate<-select(new_df, "target  (cumulative)")
 
 ```{r}
 
-
+plot(isolate[,'time_stamps'], isolate[,'value'], type = 's', xlab = "Time Stamp", ylab = "Response", main = "Cumulative Record")
 
 ```
 
