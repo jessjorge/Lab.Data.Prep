@@ -12,7 +12,7 @@ date: "2023-03-30"
 
 ```{r}
 setwd("data")
-subs<-extract("EB",11)
+subs<-extract("EB",c(11))
 ```
 
 
@@ -23,43 +23,19 @@ df<-mpc(subs[[1]],"d")
 
 ```{r}
 new_df<-var_def(df,c(
-  "0.111" = "beginning",
-  "0.2" = "rat given mate",
-  "0.25" = "rat given steroids",
-  "0.4" = "water withdrawn, doom impending",
-  "0.41" = "rat got prodded",
-  "0.42" = "rat fights snake, wins",
-  "0.6" = "rat got poked",
-  "0.61" = "rat fights snake, loses",
-  "0.65" = "rat played dress-up",
-  "0.999" = "gave rat some LSD"
+  "0.2" = "target",
+  "0.51" = "alternative"
 ), cumulative = TRUE)
 ```
 
 ```{r}
-isolate<-select(new_df, "gave rat some LSD  (cumulative)")
+isolate<-select(new_df, "target  (cumulative)")
 ```
 
 
 ```{r}
-library(ggprism)
-final_d_df = data.frame()
-  for(i in 1:length(final_d)){
-final_d_df = rbind(final_d_df, final_d[[i]])
-  }
 
-final_d_df = final_d_df %>% 
-  pivot_longer(cols = c(3:6),
-            names_to = "measure",
-             values_to = "value" ) 
 
-final_d_df %>% 
-  filter(measure == "active_total_cum") %>% 
-  ggplot()+
-  geom_step(aes(x = time_stamp/60, y = value, group = id),size = .25)+
-  labs(x = "Hours", y = "Cummulative Responses")+
-  theme_prism(base_size = 11,base_line_size = 0.30)+
-  scale_x_continuous(breaks = c(12, 24, 36, 48, 60, 72, 84),expand = c(0, 0))+ 
-  scale_y_continuous(expand = c(0, 0))
+
 ```
 

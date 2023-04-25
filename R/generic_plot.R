@@ -26,7 +26,6 @@ plot.med <- function(x, y, ...) {
 
   # Plots the data using the specified preferences
   x |>
-    filter(measure == measure) |>
     ggplot() +
     geom_step(aes(x = time_stamps, y = value), size = .25) +
     labs(x = "Time", y = "Cummulative Responses") +
