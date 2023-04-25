@@ -19,9 +19,6 @@ dataframe.}
 
 \item{cumulative}{If set to TRUE, the function will also output columns
 that keep track of the total number of times a particular event took place.}
-
-\item{long}{Set to TRUE by default. This argument tells the function to call
-the new_med constructor before returning the dataframe.}
 }
 \value{
 This function returns a dataframe x, whose first three columns

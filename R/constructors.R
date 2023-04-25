@@ -19,7 +19,8 @@ med <- function(x) {
 #' generate a cummulative record.
 #'
 #' @param x A data frame.
-#'
+#' @param variable The variable of interest, will be the second column in the
+#' matrix.
 #' @returns The function returns an object of class med.
 #' @export
 

@@ -14,8 +14,6 @@ file you want to pull the data from. Ex: "DF"}
 interested in. Ex: 21:30}
 }
 \value{
-A list of dataframes, with each dataframe belonging to a different
-
 Returns a list of dataframes, with each dataframe belonging to a different
 subject.
 }
@@ -27,4 +25,9 @@ subject.
 \note{
 Before calling this function, make sure you're working directory is in
 the file you want to extract the data from.
+}
+\examples{
+df<-extract("EB",11)
+df
+
 }
