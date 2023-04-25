@@ -33,8 +33,8 @@ time stamps and event tags. Specifically, this function is designed to handle
 arrays structured with a timestamp with a decimal that identifies event type.
 }
 \examples{
-x<-extract("EB",11)
-df<-mpc(x[[1]], "d")
+x <- extract("EB", 11)
+df <- mpc(x[[1]], "d")
 df
 
 }

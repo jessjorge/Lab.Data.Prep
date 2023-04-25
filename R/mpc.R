@@ -108,6 +108,7 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   }
 
   # make time cumulative
+  j = 2
   if (cummulative == TRUE) {
     for (j in 2:length(levels(as.factor(merged_df$session)))) {
       merged_df$time_stamps[merged_df$session == j] <-
