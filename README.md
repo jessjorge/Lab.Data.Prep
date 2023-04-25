@@ -6,7 +6,14 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of Lab.Data.Prep is to …
+The Lab Data Prep package is designed to streamline some common
+laboratory data prep tasks. Rat study data is often delivered in a
+format that is difficult to understand and work with; however, many of
+the data cleaning tasks are routine. This package consolidates these
+routine tasks into a few simple functions that can be called with ease,
+and provides a plotting utility function to use after data conversion.
+What formerly took a few hundred lines of code is now just a few
+function calls away.
 
 ## Installation
 
@@ -20,7 +27,8 @@ devtools::install_github("jessjorge/Lab.Data.Prep")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Med PC is the program used for data collection in this laboratory
+setting. The **mpc** function produces an mpc dataframe.
 
 ``` r
 library(Lab.Data.Prep)
@@ -41,32 +49,39 @@ library(Lab.Data.Prep)
 #> The following object is masked from 'package:tidyr':
 #> 
 #>     extract
-## basic example code
-```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+# Set working directory to a data folder
+setwd("data")
+
+# Extract files with a given subject number
+subs<-extract("EB",c(11))
+```
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+# Call mpc to create a med pc 
+df<-mpc(subs[[1]],"d")
 ```
 
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
+To make a dataframe, we require a dictionary of event-type/event-name
+pairs. It is reccomended to first define the dictionary, then pass it
+into the function.
 
-You can also embed plots, for example:
+``` r
+# Event type = Event Name
+vars <- c(
+  "0.2" = "target",
+  "0.51" = "alternative"
+)
 
-<img src="man/figures/README-pressure-1.png" width="100%" />
+new_df<-var_def(df, vars, cumulative = TRUE)
+```
 
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
+All that’s left is to call a constructor function, **select**, then pass
+it into the plotting function for an easy step function experience!
+
+``` r
+isolate<-select(new_df, "target  (cumulative)")
+plot(isolate)
+```
+
+<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
