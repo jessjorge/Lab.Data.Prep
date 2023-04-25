@@ -4,7 +4,7 @@
 \alias{select}
 \title{Selects a variable for plotting.}
 \usage{
-select(x, measure)
+select(x, variable)
 }
 \arguments{
 \item{x}{A data frame.}

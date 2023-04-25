@@ -4,19 +4,13 @@
 \alias{plot.med}
 \title{Generic Plot Function}
 \usage{
-\method{plot}{med}(x, y, measure, time_stamps = time_stamps, value = value, ...)
+\method{plot}{med}(x, y, ...)
 }
 \arguments{
-\item{x}{A data frame that contains the values from our research.}
+\item{x}{A matrix that contains the values from our research.This is an
+object of class med.}
 
 \item{y}{This variable is ignored.}
-
-\item{measure}{This variable allows the user to specify what was being
-measured in the trial.}
-
-\item{time_stamps}{Variable that will be plotted on the x-axis}
-
-\item{value}{Variable that will be plotted on the y-axis}
 
 \item{...}{Placeholder for further arguments.}
 }
