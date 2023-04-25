@@ -24,17 +24,18 @@
 #' ev_tags <- c(
 #' "0.111" = "beginning",
 #' "0.2" = "rat given mate",
-#' "0.25" = "rat given steroids",
-#' "0.4" = "water withdrawn, doom impending",
-#' "0.41" = "rat got prodded",
-#' "0.42" = "rat fights snake, wins",
-#' "0.6" = "rat got poked",
-#' "0.61" = "rat fights snake, loses",
-#' "0.65" = "rat played dress-up",
+#' "0.21" = "rat given steroids",
+#' "0.5" = "water withdrawn, doom impending",
+#' "0.51" = "rat got prodded",
+#' "0.52" = "rat fights snake, wins",
+#' "0.7" = "rat got poked",
+#' "0.71" = "rat fights snake, loses",
 #' "0.999" = "gave rat some LSD"
 #' )
+#' setwd("data")
+#'raw<-extract("EB", 11)
 #'
-#' df <- mpc(sub.files[[1]], "d")
+#' df <- mpc(raw[[1]], "d")
 #'
 #' my_x <- var_def(df, ev_tags)
 #'

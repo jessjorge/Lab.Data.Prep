@@ -1,12 +1,3 @@
-# Jessica
-
-# Do we need to call this library outside of the function?
-library(ggprism)
-library(ggplot2)
-library(tidyverse)
-library(tidyr)
-
-
 #' Generic Plot Function
 #'
 #' This function takes in our our newly cleaned data. It then plots the data
@@ -25,13 +16,9 @@ library(tidyr)
 plot.med <- function(x, y, ...) {
 
   # Plots the data using the specified preferences
-  x |>
-    ggplot() +
-    geom_step(aes(x = time_stamps, y = value), size = .25) +
-    labs(x = "Time", y = "Cummulative Responses") +
-    theme_prism(base_size = 11, base_line_size = 0.30) +
-    scale_x_continuous(expand = c(0, 0)) +
-    scale_y_continuous(expand = c(0, 0))
+    plot(x[,'time_stamps'], x[,'value'],
+         type = 's', xlab = "Time Stamp", ylab = "Response",
+         main = "Cumulative Record")
 }
 
 # NOTES FROM DRBEAN
