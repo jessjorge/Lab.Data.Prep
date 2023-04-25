@@ -12,30 +12,23 @@ library(tidyr)
 #' This function takes in our our newly cleaned data. It then plots the data
 #' allowing researchers to see a visual representation of their data.
 #'
-#' @param x A data frame that contains the values from our research.
+#' @param x A matrix that contains the values from our research.This is an
+#' object of class med.
 #'
 #' @param y This variable is ignored.
-#'
-#' @param measure This variable allows the user to specify what was being
-#' measured in the trial.
-#'
-#' @param time_stamps Variable that will be plotted on the x-axis
-#'
-#' @param value Variable that will be plotted on the y-axis
 #'
 #' @param ... Placeholder for further arguments.
 #'
 #' @returns The function returns a visual of plotted data.
 #'
 #' @export
-plot.med <- function(x, y, measure, time_stamps = time_stamps,
-                     value = value, ...) {
+plot.med <- function(x, y, ...) {
 
   # Plots the data using the specified preferences
   x |>
     filter(measure == measure) |>
     ggplot() +
-    geom_step(aes(x = {{ time_stamps }}, y = {{ value }}), size = .25) +
+    geom_step(aes(x = time_stamps, y = value), size = .25) +
     labs(x = "Time", y = "Cummulative Responses") +
     theme_prism(base_size = 11, base_line_size = 0.30) +
     scale_x_continuous(expand = c(0, 0)) +
