@@ -36,12 +36,12 @@ setting. The **mpc** function produces an mpc dataframe.
 library(Lab.Data.Prep)
 
 # Extract files with a given subject number
-subs<-extract("EB",c(11))
+subs <- extract("EB", c(11))
 ```
 
 ``` r
-# Call mpc to create a med pc 
-df<-mpc(subs[[1]],"d")
+# Call mpc to create a med pc
+df <- mpc(subs[[1]], "d")
 ```
 
 To make a dataframe, we require a dictionary of event-type/event-name
@@ -55,15 +55,15 @@ vars <- c(
   "0.51" = "alternative"
 )
 
-new_df<-var_def(df, vars, cumulative = TRUE)
+new_df <- var_def(df, vars, cumulative = TRUE)
 ```
 
 All that’s left is to call a constructor function, **select**, then pass
 it into the plotting function for an easy step function experience!
 
 ``` r
-isolate<-select(new_df, "target  (cumulative)")
+isolate <- select(new_df, "target  (cumulative)")
 plot(isolate)
 ```
 
-<img src="man/figures/README-unnamed-chunk-4-1.png" width="100%" />
+![The output plot](man/figures/README-unnamed-chunk-4-1.png)

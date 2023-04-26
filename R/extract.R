@@ -14,8 +14,8 @@
 #' belonging to a different subject.
 #'
 #' @examples
-#' df <- extract("EB", 11)
-#' df
+#' \dontrun{df <- extract("EB", 11)
+#' df}
 #'
 #' @export
 extract <- function(prefix, subj_nums) {

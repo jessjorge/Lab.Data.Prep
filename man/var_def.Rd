@@ -32,7 +32,7 @@ new one with dummy variables for each unique event type. The user must pass
 in a dictionary specifying what the event types should be.
 }
 \examples{
-ev_tags <- c(
+\dontrun{ev_tags <- c(
 "0.111" = "rat fights snake, loses",
 "0.999" = "gave rat some LSD"
 )
@@ -41,7 +41,7 @@ raw<-extract("EB",11)
 df<-mpc(raw[[1]], "d")
 df<- head(df)
 clean<- var_def(df, ev_tags)
-clean
+clean}
 
 #-------------------------------------
 

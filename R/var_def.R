@@ -18,8 +18,7 @@
 #' including dummy variables for unique events and corresponding cumulative
 #' columns.
 #' @examples
-
-#' ev_tags <- c(
+#' \dontrun{ev_tags <- c(
 #' "0.111" = "rat fights snake, loses",
 #' "0.999" = "gave rat some LSD"
 #' )
@@ -28,7 +27,7 @@
 #' df<-mpc(raw[[1]], "d")
 #' df<- head(df)
 #' clean<- var_def(df, ev_tags)
-#' clean
+#' clean}
 #'
 #' #-------------------------------------
 #'

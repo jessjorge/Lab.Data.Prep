@@ -21,10 +21,10 @@
 #' associated event tags.
 #'
 #' @examples
-#' x <- extract("EB", 11)
+#' \dontrun{ x <- extract("EB", 11)
 #' df <- mpc(x[[1]], "d")
 #' df
-#'
+#' }
 #' @export
 mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   # parsing text array into a data frame

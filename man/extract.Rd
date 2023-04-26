@@ -27,7 +27,7 @@ Before calling this function, make sure you're working directory is in
 the file you want to extract the data from.
 }
 \examples{
-df <- extract("EB", 11)
-df
+\dontrun{df <- extract("EB", 11)
+df}
 
 }

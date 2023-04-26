@@ -10,7 +10,7 @@ knitr::opts_chunk$set(
   comment = "#>",
   fig.path = "man/figures/README-",
   out.width = "100%",
-  root.dir = "data"
+  root.dir = "inst/extdata"
 )
 ```
 
@@ -35,21 +35,21 @@ devtools::install_github("jessjorge/Lab.Data.Prep")
 
 Med PC is the program used for data collection in this laboratory setting. The **mpc** function produces an mpc dataframe.
 
-```{r example}
+```{r example, eval=FALSE}
 library(Lab.Data.Prep)
 
 # Extract files with a given subject number
 subs <- extract("EB", c(11))
 ```
 
-```{r}
+```{r, eval=FALSE}
 # Call mpc to create a med pc
 df <- mpc(subs[[1]], "d")
 ```
 
 To make a dataframe, we require a dictionary of event-type/event-name pairs. It is reccomended to first define the dictionary, then pass it into the function.
 
-```{r}
+```{r, eval=FALSE}
 # Event type = Event Name
 vars <- c(
   "0.2" = "target",
@@ -61,7 +61,9 @@ new_df <- var_def(df, vars, cumulative = TRUE)
 
 All that's left is to call a constructor function, **select**, then pass it into the plotting function for an easy step function experience!
 
-```{r}
+```{r, eval=FALSE}
 isolate <- select(new_df, "target  (cumulative)")
 plot(isolate)
 ```
+
+![The output plot](man/figures/README-unnamed-chunk-4-1.png)
