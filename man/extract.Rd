@@ -4,7 +4,7 @@
 \alias{extract}
 \title{Extract Function}
 \usage{
-extract(prefix, subj_nums)
+extract(prefix, subj_nums, filepath)
 }
 \arguments{
 \item{prefix}{A character prefix for the filename specifying what type of
@@ -12,6 +12,9 @@ file you want to pull the data from. Ex: "DF"}
 
 \item{subj_nums}{A vector of the precise numbers of the subjects you are
 interested in. Ex: 21:30}
+
+\item{filepath}{A string giving the path to the data files you want
+extracted}
 }
 \value{
 Returns a list of dataframes, with each dataframe
@@ -27,7 +30,7 @@ Before calling this function, make sure you're working directory is in
 the file you want to extract the data from.
 }
 \examples{
-\dontrun{df <- extract("EB", 11)
+\dontrun{df <- extract("EB", 11, "./inst/extdata/")
 df}
 
 }
