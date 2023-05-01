@@ -51,8 +51,12 @@ into the function.
 ``` r
 # Event type = Event Name
 vars <- c(
-  "0.2" = "target",
-  "0.51" = "alternative"
+  "0.2" = "Gave Rat Some LSD",
+  "0.51" = "Rat Turned Into a Butterfly",
+  "0.65" = "Rat Fights Snake, Loses",
+  "0.66" = "Rat Fights Snake, Wins",
+  "0.75" = "Rat Literacy Tests",
+  "0.85" = "Water Spiked with Strawberry Wine"
 )
 
 new_df <- var_def(df, vars, cumulative = TRUE)
