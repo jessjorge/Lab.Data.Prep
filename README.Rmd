@@ -39,7 +39,7 @@ Med PC is the program used for data collection in this laboratory setting. The *
 library(Lab.Data.Prep)
 
 # Extract files with a given subject number
-subs <- extract("EB", c(11), "./inst/extdata/")
+subs <- extract("EB",11,paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
 ```
 
 ```{r, eval=FALSE}

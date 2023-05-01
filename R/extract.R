@@ -16,7 +16,7 @@
 #' belonging to a different subject.
 #'
 #' @examples
-#' \dontrun{df <- extract("EB", 11, "./inst/extdata/")
+#' \dontrun{df <- extract("EB", 11, paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
 #' df}
 #'
 #' @export
