@@ -36,7 +36,7 @@ setting. The **mpc** function produces an mpc dataframe.
 library(Lab.Data.Prep)
 
 # Extract files with a given subject number
-subs <- extract("EB", c(11))
+subs <- extract("EB", c(11), "./inst/extdata/")
 ```
 
 ``` r
@@ -66,7 +66,8 @@ All that’s left is to call a constructor function, **select**, then pass
 it into the plotting function for an easy step function experience!
 
 ``` r
-isolate <- select(new_df, "target  (cumulative)")
+isolate <- select(new_df, "Gave Rat Some LSD  (cumulative)")
+isolate
 plot(isolate)
 ```
 
