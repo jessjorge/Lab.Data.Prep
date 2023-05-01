@@ -30,7 +30,7 @@ Before calling this function, make sure you're working directory is in
 the file you want to extract the data from.
 }
 \examples{
-\dontrun{df <- extract("EB", 11, "./inst/extdata/")
+\dontrun{df <- extract("EB", 11, paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
 df}
 
 }
