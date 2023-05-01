@@ -20,7 +20,7 @@ knitr::opts_chunk$set(
 [![R-CMD-check](https://github.com/jessjorge/Lab.Data.Prep/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/jessjorge/Lab.Data.Prep/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-The Lab Data Prep package is designed to streamline some common laboratory data prep tasks. Rat study data is often delivered in a format that is difficult to understand and work with; however, many of the data cleaning tasks are routine. This package consolidates these routine tasks into a few simple functions that can be called with ease, and provides a plotting utility function to use after data conversion. What formerly took a few hundred lines of code is now just a few function calls away. 
+The Lab Data Prep package is designed to streamline some common laboratory data prep tasks for researchers utilizing Med-PC software. Med-PC data is delivered in a format that is difficult to understand and work with; however, many of the data cleaning tasks are routine. This package consolidates these routine tasks into a few simple functions that can be called with ease, and provides a plotting utility function to use after data cleanup. What formerly took a few hundred lines of code is now just a few function calls away. 
 
 ## Installation
 
@@ -33,7 +33,7 @@ devtools::install_github("jessjorge/Lab.Data.Prep")
 
 ## Example
 
-Med PC is the program used for data collection in this laboratory setting. The **mpc** function produces an mpc dataframe. **write some stuff about how extract works**
+To import Med-PC data files, the **extract()** function can be called. This function is designed to extract files for a single experiment where all subjects have a common prefix. If subjects do not share a common prefix, the function can be called for individual subjects. The subject number prefix is supplied as the first argument, in this case "EB". The subject id numbers can be supplied as either a single numeric, or a vector of numeric to extract multiple subjects. Lastly, the location of the data files are supplied in a filepath argument. **extract()** returns an r data frame for each mpc file with no change to the original formatting.
 
 ```{r example}
 library(Lab.Data.Prep)
@@ -42,14 +42,21 @@ library(Lab.Data.Prep)
 subs <- extract("EB",11,paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
 ```
 
-We call mpc on the subs **write some stuff about mpc**
+In the current example, we call the **mpc()** function on the **subs** list generated from the **extract()** function. The **mpc()** function takes as arguments a list of data files for a single subject and an array of interest from the original data file. In this case, the **"d"** array has been selected. Below is a snippet of the **"d"** array. The number before the decimal place is a timestamp in centiseconds, and the second number is a unique event identifier.
+
+```{r}
+subs[[1]][1]
+```
+
+This package is designed to handle arrays that store timestamps with associated event tags as shown above. 
 
 ```{r}
 # Call mpc to create a med pc
 df <- mpc(subs[[1]], "d")
 ```
 
-The new dataframe has 9 unique event tags. Each of these numbers corresponds to a unique event type, which will be passed in by a practitioner in the form of an R dictionary. 
+The new dataframe has 9 unique, undefined event tags. Each of these numbers corresponds to a unique event type, which will be defined by a practitioner in the form of an R dictionary.
+
 ```{r}
 unique(df$event_tags)
 ```
@@ -70,19 +77,19 @@ vars <- c(
 new_df <- var_def(df, vars, cumulative = TRUE)
 ```
 
-Now we take a look at the new dataframe. var_def has created binary variables for each element of the vars dictionary. At each time_stamp, if the event of interest occurred there is a 1 in the corresponding column. 
+Now we take a look at the new dataframe. var_def has created binary variables for each element of the vars dictionary. At each time_stamp, if the event of interest occurred there is a 1 in the corresponding column. If cumulative = TRUE, an additional column for each variable will be created to track running totals of events at each time point.  
 
 ```{r}
 head(new_df)
 ```
 
-Now we run select to just grab the columns that we want for plotting. Because we love giving rats LSD, we are grabbing the "Gave Rat Some LSD  (Cumulative)" variable. Note that the variable name must be typed exactly, and there are **two spaces** between the *variable name* and the *(cumulative)* component. 
+Now we run **select()** to grab the columns that we want for plotting. Because rats earned a lot of LSD, we are grabbing the "Rat Earned Some LSD  (cumulative)" variable. Note that the variable name must be typed exactly, and there are **two spaces** between the *variable name* and the *(cumulative)* component. 
 
 ```{r}
 isolate <- select(new_df, "Gave Rat Some LSD  (cumulative)")
 ```
 
-Now the data has been transformed and is suitable for plotting.
+Now the data has been transformed and is suitable for cummulative record generation.
 
 ```{r}
 head(isolate)
