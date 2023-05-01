@@ -90,23 +90,6 @@ mpc <- function(x, array, timescale = "min", cummulative = TRUE) {
   merged_df$id <- id
 
   # convert time
-  # if (timescale == "hour") {
-  #   merged_df$time_stamps <- merged_df$time_stamps / 360000
-  # } else if (timescale == "min") {
-  #   merged_df$time_stamps <- merged_df$time_stamps / 6000
-  # } else if (timescale == "sec") {
-  #   merged_df$time_stamps <- merged_df$time_stamps / 100
-  # } else if (timescale == "cent") {
-  #   merged_df$time_stamps <- merged_df$time_stamps
-  # } else {
-  #   warning(paste(
-  #     "Timescale argument", paste("'", timescale, "'", sep = ""),
-  #     "not recognized.
-  #                 Available arguments are: 'hour','min','sec','cent'.
-  #                 Centiseconds have been retained."
-  #   ))
-  # }
-
   switch(timescale,
          "hour" = merged_df$time_stamps <- merged_df$time_stamps / 360000,
          "min" = merged_df$time_stamps <- merged_df$time_stamps / 6000,
