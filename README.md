@@ -369,8 +369,8 @@ var_def will take the dictionary and create a new dummy variable (1’s &
 ``` r
 # Event type = Event Name
 vars <- c(
-  "0.111" = "Rat Earns LSD",
-  "0.2" = "Rat Turned Into a Butterfly",
+  "0.111" = "Rat Turned Into a Butterfly",
+  "0.2" = "Rat Earns LSD",
   "0.5" = "Rat Fights Snake, Loses",
   "0.51" = "Rat Fights Snake, Wins",
   "0.71" = "Rat Literacy Tests",
@@ -388,13 +388,13 @@ will be created to track running totals of events at each time point.
 
 ``` r
 head(new_df)
-#>   session time_stamps   id Rat Earns LSD Rat Turned Into a Butterfly
-#> 1       1  0.00000000 EB11             1                           0
-#> 2       1  0.02100000 EB11             0                           1
-#> 3       1  0.02116667 EB11             0                           0
-#> 4       1  0.02116667 EB11             0                           0
-#> 5       1  0.02950000 EB11             0                           0
-#> 6       1  0.03783333 EB11             0                           0
+#>   session time_stamps   id Rat Turned Into a Butterfly Rat Earns LSD
+#> 1       1  0.00000000 EB11                           1             0
+#> 2       1  0.02100000 EB11                           0             1
+#> 3       1  0.02116667 EB11                           0             0
+#> 4       1  0.02116667 EB11                           0             0
+#> 5       1  0.02950000 EB11                           0             0
+#> 6       1  0.03783333 EB11                           0             0
 #>   Rat Fights Snake, Loses Rat Fights Snake, Wins Rat Literacy Tests
 #> 1                       0                      0                  0
 #> 2                       0                      0                  0
@@ -402,34 +402,27 @@ head(new_df)
 #> 4                       0                      1                  0
 #> 5                       0                      1                  0
 #> 6                       0                      1                  0
-#>   Water Spiked with Strawberry Wine Rat Earns LSD  (cumulative)
-#> 1                                 0                           1
-#> 2                                 0                           1
-#> 3                                 0                           1
-#> 4                                 0                           1
-#> 5                                 0                           1
-#> 6                                 0                           1
-#>   Rat Turned Into a Butterfly  (cumulative)
-#> 1                                         0
-#> 2                                         1
-#> 3                                         1
-#> 4                                         1
-#> 5                                         1
-#> 6                                         1
-#>   Rat Fights Snake, Loses  (cumulative) Rat Fights Snake, Wins  (cumulative)
-#> 1                                     0                                    0
-#> 2                                     0                                    0
-#> 3                                     1                                    0
-#> 4                                     1                                    1
-#> 5                                     1                                    2
-#> 6                                     1                                    3
-#>   Rat Literacy Tests  (cumulative)
-#> 1                                0
-#> 2                                0
-#> 3                                0
-#> 4                                0
-#> 5                                0
-#> 6                                0
+#>   Water Spiked with Strawberry Wine Rat Turned Into a Butterfly  (cumulative)
+#> 1                                 0                                         1
+#> 2                                 0                                         1
+#> 3                                 0                                         1
+#> 4                                 0                                         1
+#> 5                                 0                                         1
+#> 6                                 0                                         1
+#>   Rat Earns LSD  (cumulative) Rat Fights Snake, Loses  (cumulative)
+#> 1                           0                                     0
+#> 2                           1                                     0
+#> 3                           1                                     1
+#> 4                           1                                     1
+#> 5                           1                                     1
+#> 6                           1                                     1
+#>   Rat Fights Snake, Wins  (cumulative) Rat Literacy Tests  (cumulative)
+#> 1                                    0                                0
+#> 2                                    0                                0
+#> 3                                    0                                0
+#> 4                                    1                                0
+#> 5                                    2                                0
+#> 6                                    3                                0
 #>   Water Spiked with Strawberry Wine  (cumulative)
 #> 1                                               0
 #> 2                                               0
@@ -446,7 +439,7 @@ exactly, and there are **two spaces** between the *variable name* and
 the *(cumulative)* component.
 
 ``` r
-isolate <- select(new_df, "Gave Rat Some LSD  (cumulative)")
+isolate <- select(new_df, "Rat Earns LSD  (cumulative)")
 ```
 
 Now the data has been transformed and is suitable for cummulative record
@@ -455,8 +448,18 @@ generation.
 ``` r
 head(isolate)
 #>      time_stamps value
+#> [1,]  0.00000000     0
+#> [2,]  0.02100000     1
+#> [3,]  0.02116667     1
+#> [4,]  0.02116667     1
+#> [5,]  0.02950000     1
+#> [6,]  0.03783333     1
 ```
 
 All that’s left is to plot!
 
-![The output plot](man/figures/README-unnamed-chunk-4-1.png)
+``` r
+plot(isolate)
+```
+
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />

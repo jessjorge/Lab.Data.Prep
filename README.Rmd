@@ -66,8 +66,8 @@ A dictionary in R looks a lot like a vector, but each element consists of a key 
 ```{r}
 # Event type = Event Name
 vars <- c(
-  "0.111" = "Rat Earns LSD",
-  "0.2" = "Rat Turned Into a Butterfly",
+  "0.111" = "Rat Turned Into a Butterfly",
+  "0.2" = "Rat Earns LSD",
   "0.5" = "Rat Fights Snake, Loses",
   "0.51" = "Rat Fights Snake, Wins",
   "0.71" = "Rat Literacy Tests",
@@ -86,7 +86,7 @@ head(new_df)
 Now we run **select()** to grab the columns that we want for plotting. Because rats earned a lot of LSD, we are grabbing the "Rat Earned Some LSD  (cumulative)" variable. Note that the variable name must be typed exactly, and there are **two spaces** between the *variable name* and the *(cumulative)* component. 
 
 ```{r}
-isolate <- select(new_df, "Gave Rat Some LSD  (cumulative)")
+isolate <- select(new_df, "Rat Earns LSD  (cumulative)")
 ```
 
 Now the data has been transformed and is suitable for cummulative record generation.
@@ -97,4 +97,7 @@ head(isolate)
 
 All that's left is to plot!
 
-![The output plot](man/figures/README-unnamed-chunk-4-1.png)
+
+```{r}
+plot(isolate)
+```
