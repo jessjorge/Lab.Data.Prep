@@ -39,7 +39,7 @@ To import Med-PC data files, the **extract()** function can be called. This func
 library(Lab.Data.Prep)
 
 # Extract files with a given subject number
-subs <- extract("EB",11,paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
+subs <- extract("EB", 11, paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
 ```
 
 In the current example, we call the **mpc()** function on the **subs** list generated from the **extract()** function. The **mpc()** function takes as arguments a list of data files for a single subject and an array of interest from the original data file. In this case, the **"d"** array has been selected. Below is a snippet of the **"d"** array. The number before the decimal place is a timestamp in centiseconds, and the second number is a unique event identifier.
