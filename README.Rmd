@@ -31,7 +31,11 @@ You can install the development version of Lab.Data.Prep from [GitHub](https://g
 devtools::install_github("jessjorge/Lab.Data.Prep")
 ```
 
+Github Repository: https://github.com/jessjorge/Lab.Data.Prep
+
 ## Example
+
+The data used in the example below came from a single rat subject in the Shahan laboratory at Utah State University. Data was collected using Med Associates software. The program from which the data was generated was written in Med-PC IV. The labels ascribed to event tags are fictitious.
 
 To import Med-PC data files, the **extract()** function can be called. This function is designed to extract files for a single experiment where all subjects have a common prefix. If subjects do not share a common prefix, the function can be called for individual subjects. The subject number prefix is supplied as the first argument, in this case "EB". The subject id numbers can be supplied as either a single numeric, or a vector of numeric to extract multiple subjects. Lastly, the location of the data files are supplied in a filepath argument. **extract()** returns an r data frame for each mpc file with no change to the original formatting.
 
@@ -52,7 +56,7 @@ This package is designed to handle arrays that store timestamps with associated 
 
 ```{r}
 # Call mpc to create a med pc
-df <- mpc(subs[[1]], "d")
+df <- mpc(subs[[1]], "d", timescale = "min")
 ```
 
 The new dataframe has 9 unique, undefined event tags. Each of these numbers corresponds to a unique event type, which will be defined by a practitioner in the form of an R dictionary.
@@ -96,8 +100,10 @@ head(isolate)
 ```
 
 All that's left is to plot!
-
+The generic plot function produces a cummulative record of the variable of interest. In this case, we are plotting the number of times the rat earned a dose of LSD. Each step in the figure indicates an occurrence of the rat earning LSD. The timescale of the x-axis is unaltered from the provided matrix. In this example, the timescale is in minutes.
 
 ```{r}
 plot(isolate)
 ```
+
+The tools of this package together may be used in the structure presented above to generate cummulative records, or the may be used seperately for different data analysis needs.

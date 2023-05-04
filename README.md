@@ -27,7 +27,14 @@ You can install the development version of Lab.Data.Prep from
 devtools::install_github("jessjorge/Lab.Data.Prep")
 ```
 
+Github Repository: <https://github.com/jessjorge/Lab.Data.Prep>
+
 ## Example
+
+The data used in the example below came from a single rat subject in the
+Shahan laboratory at Utah State University. Data was collected using Med
+Associates software. The program from which the data was generated was
+written in Med-PC IV. The labels ascribed to event tags are fictitious.
 
 To import Med-PC data files, the **extract()** function can be called.
 This function is designed to extract files for a single experiment where
@@ -44,7 +51,7 @@ formatting.
 library(Lab.Data.Prep)
 
 # Extract files with a given subject number
-subs <- extract("EB",11,paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
+subs <- extract("EB", 11, paste(system.file("extdata", package = "Lab.Data.Prep"),"/", sep = ""))
 ```
 
 In the current example, we call the **mpc()** function on the **subs**
@@ -347,7 +354,7 @@ associated event tags as shown above.
 
 ``` r
 # Call mpc to create a med pc
-df <- mpc(subs[[1]], "d")
+df <- mpc(subs[[1]], "d", timescale = "min")
 ```
 
 The new dataframe has 9 unique, undefined event tags. Each of these
@@ -456,10 +463,19 @@ head(isolate)
 #> [6,]  0.03783333     1
 ```
 
-All that’s left is to plot!
+All that’s left is to plot! The generic plot function produces a
+cummulative record of the variable of interest. In this case, we are
+plotting the number of times the rat earned a dose of LSD. Each step in
+the figure indicates an occurrence of the rat earning LSD. The timescale
+of the x-axis is unaltered from the provided matrix. In this example,
+the timescale is in minutes.
 
 ``` r
 plot(isolate)
 ```
 
 <img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+
+The tools of this package together may be used in the structure
+presented above to generate cummulative records, or the may be used
+seperately for different data analysis needs.
